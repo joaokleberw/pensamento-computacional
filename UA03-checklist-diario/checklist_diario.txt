@@ -1,0 +1,78 @@
+// UA03 - Desafio: checklist diario automatizado (pseudocodigo)
+// Autor: Joao Kleber - Pensamento Computacional (UNIVALI)
+
+
+ALGORITMO Checklist_Diario
+
+VARIÁVEIS:
+    tarefas: lista de tarefas
+    quantidade, i: inteiro
+    dataAtual: data
+    concluida: lógico
+
+INÍCIO
+
+    // ETAPA 1 - Inicialização (estrutura sequencial)
+
+    ESCREVA("CHECKLIST DIÁRIO - EQUIPE DE MARKETING")
+
+    dataAtual <- DATA_ATUAL
+
+    tarefas <- [
+        ("Planejar campanha", "09:00"),
+        ("Criar conteúdo", "11:00"),
+        ("Revisar material", "14:00"),
+        ("Aprovar campanha", "15:00"),
+        ("Publicar campanha", "17:00")
+    ]
+
+    quantidade <- TAMANHO(tarefas)
+
+    // ETAPA 2 - Verificação das tarefas (repetição)
+
+    PARA i DE 1 ATÉ quantidade FAÇA
+
+        ESCREVA("Tarefa: ", tarefas[i].descricao)
+        ESCREVA("Prazo: ", tarefas[i].prazo)
+
+        // ETAPA 3 - Verificação da ordem (condicional)
+
+        SE i > 1 E tarefa_anterior NÃO ESTIVER CONCLUÍDA ENTÃO
+
+            ESCREVA("STATUS: BLOQUEADA - Etapa anterior pendente.")
+
+        SENÃO
+
+            ESCREVA("A tarefa foi concluída? (S/N)")
+            LEIA(concluida)
+
+            // ETAPA 4 - Verificação de conclusão e prazo
+
+            SE concluida = VERDADEIRO ENTÃO
+
+                ESCREVA("STATUS: Tarefa concluída.")
+
+            SENÃO
+
+                SE HORA_ATUAL > tarefas[i].prazo ENTÃO
+
+                    ESCREVA("STATUS: ATRASADA!")
+
+                SENÃO
+
+                    ESCREVA("STATUS: PENDENTE.")
+
+                FIMSE
+
+            FIMSE
+
+        FIMSE
+
+    FIMPARA
+
+    // ETAPA 5 - Encerramento
+
+    ESCREVA("CHECKLIST FINALIZADO.")
+    ESCREVA("Verifique as tarefas pendentes e atrasadas.")
+
+FIM
